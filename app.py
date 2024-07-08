@@ -1,24 +1,17 @@
 import streamlit as st
+from io import StringIO
 from utils import *
 
 st.title("Resume Reader")
 st.header("Built using Streamlit and Groq")
-doc = st.file_uploader("Please upload the resume here.", accept_multiple_files=False)
-option = st.selectbox("What is the filetype?", ("pdf", "docx"), placeholder = "Select filetype...")
+doc = st.file_uploader("Please upload the resume here.", accept_multiple_files=True)
 submit = st.button("Process")
 
 if(submit):
     if(doc):
-        if(option == "pdf"):
-            text = get_pdf_text(doc)
-        else:
-            #if docx, need to store in local
-            store_in_local(doc)
-            path = ""
-            text = get_docx_text(path)
-        
-        #create chat completion
-        #get response
-
+        text = get_pdf_text(doc)
+        response = query_response(text)
+        st.success(response)
+      
     else:
         st.error("Please upload a file!!!")
