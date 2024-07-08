@@ -4,7 +4,6 @@ from docx import Document
 import json
 from pydantic import BaseModel
 
-
 class Education(BaseModel):
     degree : str
     university : str
@@ -39,7 +38,6 @@ def get_docx_text(docx_files):
         for para in document.paragraphs:
             text += para.text + "\n"
     return text
-
 
 def query_response(text):
     client = Groq(api_key="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")
