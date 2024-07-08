@@ -2,6 +2,7 @@ from PyPDF2 import PdfReader
 from groq import Groq
 from docx import Document
 
+
 def get_pdf_text(pdfs):
     text = ""
     for pdf in pdfs:
@@ -17,6 +18,7 @@ def get_docx_text(docx_files):
         for para in document.paragraphs:
             text += para.text + "\n"
     return text
+
 
 def query_response(text):
     client = Groq(api_key="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")
