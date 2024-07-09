@@ -1,5 +1,6 @@
 import streamlit as st
 from io import StringIO
+import pandas as pd
 from utils import *
 
 st.title("Resume Reader")
@@ -18,7 +19,8 @@ if(submit):
             text = doc[0].read().decode("utf-8")
 
         response = query_response(text)
-        st.success(response)
+        st.success(json.loads(response))
+       
         
     else:
         st.error("Please upload a file!!!")

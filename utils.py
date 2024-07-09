@@ -59,3 +59,4 @@ def query_response(text):
     )
 
     return chat_completion.choices[0].message.content
+
